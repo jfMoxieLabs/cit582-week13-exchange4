@@ -93,9 +93,8 @@ def trade():
       else:
         new_log = Log(message = json.dumps(payload))
         g.session.add(new_log)
-        #g.session.commit()
-        #return jsonify( False )
-        ret = False
+        g.session.commit()
+        return jsonify( False )
 
 
     elif (content['payload']['platform'] == "Ethereum"):
@@ -114,14 +113,13 @@ def trade():
         g.session.add(new_log)
         #g.session.commit()
         #return jsonify( False )
-        ret = False
+        return jsonify( False )
         
     else:
         new_log = Log(message = json.dumps(payload))
         g.session.add(new_log)
-        #g.session.commit()
-        #return jsonify( False )
-        ret = False
+        g.session.commit()
+        return jsonify( False )
 
     
         
@@ -167,7 +165,7 @@ def trade():
         
         # TODO: Be sure to return jsonify(True) or jsonify(False) depending on if the method was successful
     g.session.commit()
-    return jsonify( ret )  
+    return jsonify( True )  
 
 @app.route('/order_book')
 def order_book():
